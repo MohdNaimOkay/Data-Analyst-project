@@ -1,0 +1,5 @@
+Which occupation has the highest and lowest average sleep duration?
+select occupation, round(avg(sleep_duration_hrs),2) as "sleep Hours per day"
+from health_dataset
+group by occupation 
+order by avg(sleep_duration_hrs) desc
