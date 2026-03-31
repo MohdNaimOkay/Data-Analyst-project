@@ -3,3 +3,9 @@ select occupation, round(avg(sleep_duration_hrs),2) as "sleep Hours per day"
 from health_dataset
 group by occupation 
 order by avg(sleep_duration_hrs) desc
+
+How does stress level affect sleep quality?
+select occupation, round(avg(sleep_quality_score),2) as "sleep quality", round(avg(stress_score),2) as "stress level"
+from health_dataset
+group by occupation
+order by avg(stress_score) desc
