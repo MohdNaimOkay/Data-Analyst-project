@@ -30,3 +30,12 @@ order by avg(sleep_quality_score) desc
 ```
 <img width="523" height="430" alt="image" src="https://github.com/user-attachments/assets/bed87fd1-977a-48ee-8347-e55539a7d7f0" />
 
+```sql
+select 
+case
+when "screen_time_before_bed_mins"<30 then 'low'
+when "screen_time_before_bed_mins">=30 and "screen_time_before_bed_mins"<60 then 'medium'
+else 'high'
+end as "sleep_category",avg(sleep_quality_score) from health_dataset
+group by screen_time_before_bed_mins
+```
