@@ -3,6 +3,15 @@ How does stress level affect sleep quality?
 
 
 Which occupation has the highest and lowest average sleep duration?
+
+```sql
+select occupation, round(avg(sleep_duration_hrs),2) as "sleep Hours per day"
+from health_dataset
+group by occupation 
+order by avg(sleep_duration_hrs) desc
+```
+
+
 <img width="389" height="447" alt="image" src="https://github.com/user-attachments/assets/1b287b5c-27dd-4c59-a94f-4bbf40c7ed39" />
 
 Does screen time before bed impact sleep quality?
