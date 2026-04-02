@@ -9,3 +9,9 @@ select occupation, round(avg(sleep_quality_score),2) as "sleep quality", round(a
 from health_dataset
 group by occupation
 order by avg(stress_score) desc
+
+Does screen time before bed impact sleep quality?
+select occupation , round(avg(screen_time_before_bed_mins),2) as "screen_time in mins", round(avg(sleep_quality_score),2) as "sleep_quality" 
+from health_dataset
+group by occupation
+order by avg(sleep_quality_score) desc
