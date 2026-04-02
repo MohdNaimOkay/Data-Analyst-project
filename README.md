@@ -22,5 +22,11 @@ order by avg(sleep_duration_hrs) desc
 <img width="389" height="447" alt="image" src="https://github.com/user-attachments/assets/1b287b5c-27dd-4c59-a94f-4bbf40c7ed39" />
 
 Does screen time before bed impact sleep quality?
+```sql
+select occupation , round(avg(screen_time_before_bed_mins),2) as "screen_time in mins", round(avg(sleep_quality_score),2) as "sleep_quality" 
+from health_dataset
+group by occupation
+order by avg(sleep_quality_score) desc
+```
 <img width="523" height="430" alt="image" src="https://github.com/user-attachments/assets/bed87fd1-977a-48ee-8347-e55539a7d7f0" />
 
