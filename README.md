@@ -23,19 +23,14 @@ order by avg(sleep_duration_hrs) desc
 
 Does screen time before bed impact sleep quality?
 ```sql
-select occupation , round(avg(screen_time_before_bed_mins),2) as "screen_time in mins", round(avg(sleep_quality_score),2) as "sleep_quality" 
-from health_dataset
-group by occupation
-order by avg(sleep_quality_score) desc
-```
-<img width="523" height="430" alt="image" src="https://github.com/user-attachments/assets/bed87fd1-977a-48ee-8347-e55539a7d7f0" />
-
-```sql
-select 
-case
-when "screen_time_before_bed_mins"<30 then 'low'
-when "screen_time_before_bed_mins">=30 and "screen_time_before_bed_mins"<60 then 'medium'
+select occupation,
+case 
+when "screen_time_before_bed_mins" <30 then 'low'
+when "screen_time_before_bed_mins" >=30 and "screen_time_before_bed_mins"< 60 then 'medium'
 else 'high'
-end as "sleep_category",avg(sleep_quality_score) from health_dataset
-group by screen_time_before_bed_mins
+end as "sleep_quality_risk" , count(*) as total_people, round(count(*)*100/sum(count(*)) over (partition by occupation),2) as percentage_of_occupation from health_dataset
+group by occupation, sleep_quality_risk
+order by occupation,sleep_quality_risk
 ```
+<img width="599" height="714" alt="image" src="https://github.com/user-attachments/assets/d06dfdb4-13fb-4b97-b834-ba8f4d0fcea3" />
+
